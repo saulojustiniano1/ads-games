@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1tlryt48y2bo"]
+
+[ext_resource type="PackedScene" uid="uid://cxblhvrhb4ls8" path="res://sprite_2d.tscn" id="1_bby1p"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_bby1p")]
+position = Vector2(588, 271)
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 454.0
+offset_top = 571.0
+offset_right = 717.0
+offset_bottom = 633.0
+text = "Mover"
+
+[node name="ButtonLeft" type="Button" parent="."]
+offset_left = 60.0
+offset_top = 447.0
+offset_right = 219.0
+offset_bottom = 524.0
+text = "Left
+"
+
+[node name="ButtonRight" type="Button" parent="."]
+offset_left = 235.0
+offset_top = 447.0
+offset_right = 394.0
+offset_bottom = 524.0
+text = "Right
+"
+
+[node name="ButtonUp" type="Button" parent="."]
+offset_left = 147.0
+offset_top = 349.0
+offset_right = 306.0
+offset_bottom = 426.0
+text = "Up
+"
+
+[node name="ButtonDown" type="Button" parent="."]
+offset_left = 153.0
+offset_top = 542.0
+offset_right = 312.0
+offset_bottom = 619.0
+text = "Down
+"
+
+[connection signal="pressed" from="Button" to="Sprite2D" method="_on_button_pressed"]
+[connection signal="button_down" from="ButtonLeft" to="Sprite2D" method="_on_button_left_button_down"]
+[connection signal="button_up" from="ButtonLeft" to="Sprite2D" method="_on_button_left_button_up"]
+[connection signal="button_down" from="ButtonRight" to="Sprite2D" method="_on_button_right_button_down"]
+[connection signal="button_up" from="ButtonRight" to="Sprite2D" method="_on_button_right_button_up"]
+[connection signal="button_down" from="ButtonUp" to="Sprite2D" method="_on_button_up_button_down"]
+[connection signal="button_up" from="ButtonUp" to="Sprite2D" method="_on_button_up_button_up"]
+[connection signal="button_down" from="ButtonDown" to="Sprite2D" method="_on_button_down_button_down"]
+[connection signal="button_up" from="ButtonDown" to="Sprite2D" method="_on_button_down_button_up"]
