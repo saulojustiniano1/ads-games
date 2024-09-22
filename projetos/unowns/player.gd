@@ -1,12 +1,38 @@
 extends Area2D
 
-var speed = 400
-var v
-
+@export var speed = 400
+var screen_size
 
 func _ready():
-	pass
-
+	screen_size = get_viewport_rect().size
 
 func _process(delta):
-	pass
+	var velocity = Vector2.ZERO
+	
+	if Input.is_action_pressed("move_right"):
+		velocity.x += 1
+	if Input.is_action_pressed("move_left"):
+		velocity.x -= 1
+	if Input.is_action_pressed("move_up"):
+		velocity.y -= 1
+	if Input.is_action_pressed("move_down"):
+		velocity.y += 1
+	
+	position += velocity * speed * delta
+	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	var flipHorizontal = velocity.x < 0
+	var flipVertical = velocity.y > 0
+	
+	if velocity.x != 0:
+		$Animated.animation = "walk"
+		$Animated.flip_v = false
+		$Animated.flip_h = flipHorizontal
+	else:
+		$Animated.animation = "up"
+		$Animated.flip_v = flipVertical
+	
+	if velocity.length() != 0:
+		$Animated.play()
+	else:
+		$Animated.stop()
