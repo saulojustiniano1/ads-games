@@ -3,8 +3,16 @@ extends Area2D
 @export var speed = 400
 var screen_size
 
+signal hit
+
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()
+	
+func start(pos):
+	position = pos
+	show()
+	$Collision.disabled = false
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -36,3 +44,8 @@ func _process(delta):
 		$Animated.play()
 	else:
 		$Animated.stop()
+
+func _on_body_entered(body):
+	hide()
+	$Collision.set_deferred("disabled", true)
+	hit.emit()
