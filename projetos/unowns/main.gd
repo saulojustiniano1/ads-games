@@ -22,6 +22,8 @@ func game_over():
 func _on_enemy_timer_timeout():
 	# Cria uma nova instancia do enemy
 	var enemy = enemy_scene.instantiate()
+	# adicionaa a instancia na scena main
+	add_child(enemy)
 	# Obtem referencia ao node PathFllow2D
 	var enemy_spawn_position = $EnemyPath/EnemySpawnPosition
 	# Gere um valor entre 0.0 e 1.0 e atribui ao progress_ratio
@@ -34,10 +36,11 @@ func _on_enemy_timer_timeout():
 	# Atribui rotacao ao inimigo
 	enemy.rotation = diretion
 	# Difine a velocidade de movimento ao inimigo
-	var velocity = Vector2(randf_range(100.0, 250.0), 0.0)
+	#var velocity = Vector2(randf_range(100.0, 250.0), 0.0)
+	var velocity = Vector2(enemy.speed, 0.0)
 	enemy.linear_velocity = velocity.rotated(diretion)
-	# adicionaa a instancia na scena main
-	add_child(enemy)
+	print(velocity)
+
 
 func _on_score_timer_timeout():
 	score += 1
