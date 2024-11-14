@@ -5,14 +5,17 @@ var screen_size
 
 signal hit
 
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
-	
+
+
 func start(pos):
 	position = pos
 	show()
 	$Collision.disabled = false
+
 
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -46,6 +49,12 @@ func _process(delta):
 		$Animated.stop()
 
 func _on_body_entered(body):
-	hide()
-	$Collision.set_deferred("disabled", true)
-	hit.emit()
+	if body.is_in_group("enemy"):
+		hide()
+		$Collision.set_deferred("disabled", true)
+		hit.emit()
+	elif body.is_in_group("bomb"):
+		body.queue_free()
+		get_tree().call_group('enemy', 'queue_free')
+		$BombAudio.play()
+	

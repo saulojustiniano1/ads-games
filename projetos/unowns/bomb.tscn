@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8lp3ajq42ooi"]
+
+[ext_resource type="Texture2D" uid="uid://xqmrgt75vobx" path="res://art/bomb.png" id="1_g021b"]
+[ext_resource type="Script" path="res://bomb.gd" id="1_jmkbg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y07mh"]
+radius = 37.0
+height = 98.0
+
+[node name="Bomb" type="StaticBody2D" groups=["bomb"]]
+collision_layer = 4
+script = ExtResource("1_jmkbg")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_g021b")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y07mh")
