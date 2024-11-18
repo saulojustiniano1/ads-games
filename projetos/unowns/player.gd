@@ -4,6 +4,8 @@ extends Area2D
 var screen_size
 
 signal hit
+signal bomb
+signal power_up
 
 
 func _ready():
@@ -53,8 +55,11 @@ func _on_body_entered(body):
 		hide()
 		$Collision.set_deferred("disabled", true)
 		hit.emit()
-	elif body.is_in_group("bomb"):
+	if body.is_in_group("bomb"):
 		body.queue_free()
 		get_tree().call_group('enemy', 'queue_free')
-		$BombAudio.play()
+		bomb.emit()
+	if body.is_in_group("power_up"):
+		body.hide()
+		power_up.emit()
 	

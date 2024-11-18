@@ -18,10 +18,6 @@ func _on_start_button_pressed():
 	start_game.emit()
 
 
-func _on_message_timer_timeout():
-	$MessageLabel.hide()
-
-
 func show_game_over():
 	show_message('Game Over!')
 	await $MessageTimer.timeout
@@ -31,3 +27,5 @@ func show_game_over():
 	
 	$StartButton.show()
 
+func _on_message_timer_timeout():
+	$MessageLabel.hide()
