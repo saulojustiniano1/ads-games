@@ -10,6 +10,7 @@ func _ready():
 	GameManager.player = self
 	GameManager.player_start_position = position
 
+
 func _process(delta):
 	update_animation()
 	
@@ -43,3 +44,7 @@ func update_animation():
 	else:
 		animated.play("jump")
 	
+
+
+func _on_coin_body_entered(body):
+	pass # Replace with function body.
