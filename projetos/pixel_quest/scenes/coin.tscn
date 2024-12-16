@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx66tcn5r8mq3"]
+
+[ext_resource type="Texture2D" uid="uid://d2xp52fdwuxij" path="res://image/coin.png" id="1_mcvs4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckcuc"]
+radius = 11.0
+height = 26.0
+
+[node name="Coin" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_mcvs4")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ckcuc")
