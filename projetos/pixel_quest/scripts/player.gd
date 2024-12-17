@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -450
 const GRAVITY = 1800
 
 @onready var life_label = $"../HUB/LifeLabel"
+@onready var score_label = $"../HUB/ScoreLabel"
 
 @onready var animated = $Animated
 @onready var audio_pular = $"../AudioPular"
@@ -61,5 +62,6 @@ func _on_enemy_ghost_body_entered(body):
 	position = GameManager.player_start_position
 	emit_signal("dano")
 
-
-
+func _on_enemy_phantom_body_entered(body):
+	position = GameManager.player_start_position
+	emit_signal("dano")

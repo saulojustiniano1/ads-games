@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://kmlg0tmqd0vu"]
+
+[ext_resource type="Texture2D" uid="uid://prt06nc5aijx" path="res://animations/enemy/enemy_3.png" id="1_iogyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aamw0"]
+atlas = ExtResource("1_iogyn")
+region = Rect2(0, 0, 167, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdqk8"]
+atlas = ExtResource("1_iogyn")
+region = Rect2(167, 0, 167, 116)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_101yr"]
+atlas = ExtResource("1_iogyn")
+region = Rect2(334, 0, 167, 116)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dykgh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aamw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdqk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_101yr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acgq8"]
+size = Vector2(88, 49)
+
+[node name="EnemyPhantom" type="Area2D"]
+
+[node name="Animated" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_dykgh")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_acgq8")

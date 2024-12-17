@@ -15,8 +15,3 @@ func _process(delta):
 			$EnemyWorm2/Animated.flip_h = true
 		else:
 			$EnemyWorm2/Animated.flip_h = false
-		 
-
-
-
-

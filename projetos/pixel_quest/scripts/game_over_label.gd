@@ -9,3 +9,4 @@ func _ready():
 func _on_life_label_morreu():
 	game_over_label.visible = true
 	audio_game_over.play()
+	GameManager.player_entered_reset_area()

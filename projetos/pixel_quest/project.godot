@@ -65,6 +65,7 @@ shoot={
 2d_physics/layer_4="Coin"
 2d_physics/layer_5="EnemyWorm"
 2d_physics/layer_6="EnemyGhost"
+2d_physics/layer_7="EnemyPhantom"
 
 [rendering]
 
